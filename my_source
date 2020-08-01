@@ -1,0 +1,178 @@
+###################################################
+################## configuration ##################
+###################################################
+
+# more history lines
+export HISTSIZE=20000
+export SAVEHIST=$HISTSIZE
+
+# set locale to prevent clion remote debug bug
+localectl set-locale LANG=en_US.UTF-8 2> /dev/null
+
+# set up spack environment
+. $HOME/Software/spack/spack/share/spack/setup-env.sh 2> /dev/null
+###################################################
+################## command alias ##################
+###################################################
+alias myls="ls -al"
+
+# add grep with some conditions for convinience
+alias mygrep="grep -C 3 -i -n"
+
+# echo "Abc"|myxclip  # copy from standard input
+# myxclip  # read from user input
+# my
+alias myxclip="xclip -selection clipboard"
+
+alias ag="ag -U --hidden"
+
+alias set_proxy="export http_proxy=127.0.0.1:8080 && export https_proxy=127.0.0.1:8080"
+
+# added manually to alias common-lisp SBCL to lisp 
+alias lisp="sbcl"
+
+# added manually to open emacs in terminal
+alias emacsnw="fanqiang emacs -nw"
+
+# added manually to use tmux for convenience
+alias t="tmux"
+
+# added manually to open program with system default software
+alias o='xdg-open'
+
+# add command for wps softwares
+alias wps="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/wps"
+alias wpp="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/wpp"
+alias et="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/et"
+
+# go to directories
+# alias goto="cd /home/ban/Desktop/ && cd"
+goto(){
+    if [[ -d "/home/ban/Desktop/$1" ]];then
+        cd /home/ban/Desktop/ && cd "$1"
+    else
+        nvim /home/ban/Desktop/"$1"
+    fi
+}
+
+# system python3 (which is covered by anaconda python3)
+alias python3-system="/usr/bin/python3"
+
+# start docker for fenics
+alias fenicsstart="fenicsproject start myproject"
+
+# open newest paraview version instead of the one installed by apt install
+alias paraview_new="$HOME/Software/paraview/ParaView-5.7.0-MPI-Linux-Python3.7-64bit/bin/paraview"
+
+# create python2 virtual env in the present dir and source
+alias pyenv2="[[ -f venv2/bin/activate ]] || virtualenv -p /usr/bin/python2.7 venv2;source venv2/bin/activate"
+# create python3 virtual env in the present dir and source
+alias pyenv3="[[ -f venv3/bin/activate ]] || virtualenv -p /usr/bin/python3.6 venv3;source venv3/bin/activate"
+
+# Browse Hacker News like a haxor: A Hacker News command line interface (CLI).
+alias haxor-news="proxychains haxor-news"
+
+# instant coding answers via the command line
+alias howdoi="proxychains howdoi"
+
+# fzf command with preview window
+alias fzf-preview="fzf --preview-window 'right:60%' --reverse --preview '(highlight -O ansi -l {} 2> /dev/null || bat --color=always --style=header,grid --line-range :300 {} || tree -C -L 1 {}) 2> /dev/null | head -200'"
+alias fzf-preview-split="fzf --preview-window 'down:60%' --reverse --preview '(highlight -O ansi -l {} 2> /dev/null || bat --color=always --style=header,grid --line-range :300 {} || tree -C -L 1 {}) 2> /dev/null | head -200'"
+
+# autojump command with preivew window
+alias j=$'cd $(cat $HOME/.local/share/autojump/autojump.txt|sort -r|awk \'{print $2}\'|fzf-preview-split || echo .)'
+alias jc=$'cd $(replace "$(pwd)" "." "$(cat $HOME/.local/share/autojump/autojump.txt|grep "$(pwd)"|sort -r|awk \'{print $2}\')"|fzf-preview-split || echo .)'
+
+# file manager ranger
+alias r='[[ $TERM = "stterm-256color" ]] && ranger || stterm -e ranger'
+
+alias fuzzy_find="find -type f|fzf-preview-split"
+###################################################
+############ shortcuts settings ###################
+###################################################
+# shortcuts for autojump
+[ ${ZSH_VERSION} ] && bindkey -s '\ej' 'j\n'
+
+
+###################################################
+################# variable export #################
+###################################################
+# add server variable
+export server_addr="139.180.206.107"
+export colony_addr="kyzhou@10.4.3.17"
+
+# added manually for matlab workspace home
+export MATLAB_HOME="/home/ban/Programming/Matlab/workspace"
+
+# added manually for github name
+export github_name="https://github.com/asfsdsf/"
+
+# mails
+mail_institute="zhoukaiye@lsec.cc.ac.cn"
+mail_qq="739521505@qq.com"
+# export EMAIL="zhoukaiye@lsec.cc.ac.cn"
+export EMAIL="739521505@qq.com"
+
+# add sfepy path
+export sfepy_path="/home/ban/Programming/Python/Anaconda/lib/python3.6/site-packages/sfepy/script"
+
+# added by Anaconda3 installer
+# export PATH="/home/ban/Programming/Python/Anaconda/bin:$PATH"
+
+# added manually to start emacs deamon automatically
+export ALTERNATE_EDITOR=""
+
+# added manually to set tmux default editor
+export EDITOR="nvim"
+
+# added manually for java env
+export JAVA_HOME=/usr/local/java/jdk1.8.0_181
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+export PATH=${HOME}/Software/julia/julia-1.3.1/bin:$PATH
+
+# added manually for go env
+export GOPATH="$HOME/Programming/Go/path"
+
+# added manually for python custom module
+export PYTHONPATH="${HOME}/Programming/Python/Custom_module"
+# added manually for fealpy module
+export PYTHONPATH="$PYTHONPATH:${HOME}/Software/fealpy/software/lib/python3.6/site-packages"
+
+# added manually for mpi env
+export PATH=/usr/local/mpich/bin:$PATH
+# added manually for script to be run in command line
+export PATH=/home/ban/Programming/shell/command:$PATH
+# added manually for gradle env
+export PATH=$PATH:/usr/local/gradle/gradle-4.9/bin
+
+# added manually for libmesh env
+export LIBMESH_DIR=/home/ban/Software/libmesh/software
+
+# added manually for PETSc env
+export PETSC_DIR=/home/ban/Software/PETSc/petsc 
+export PETSC_ARCH=arch-linux-c-debug
+
+# added manually for slepc env
+export SLEPC_DIR=/home/ban/Software/slepc/software
+
+# added manually for deal.ii env
+export DEAL_II_DIR=/home/ban/Software/deal_II/software
+
+# added manually for latex env
+export LOCALTEXMF="$HOME/Software/latex"
+export BIBINPUTS="$LOCALTEXMF/bibtex/bib"
+
+# added manually for fzf c-t search file preview
+export FZF_CTRL_T_OPTS="--height=80% --preview '(highlight -O ansi -l {} 2> /dev/null || bat --color=always --style=header,grid --line-range :300 {} || tree -C {}) 2> /dev/null | head -200' --preview-window down:50%"
+# added mannually in order to show full command in preview window for c-r history search
+# Press ? to show full command
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+
+# added manually to preview image for ranger
+export w3mimgdisplay="/usr/lib/w3m/w3mimgdisplay"
+
+# added manually for octave fem-fenics installation
+# export CPPFLAGS="-I/usr/include/eigen3 $(mpicxx -showme:compile)"
+
