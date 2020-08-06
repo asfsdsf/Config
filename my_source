@@ -46,12 +46,12 @@ alias wpp="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/wpp"
 alias et="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/et"
 
 # go to directories
-# alias goto="cd /home/ban/Desktop/ && cd"
+# alias goto="cd $HOME/Desktop/ && cd"
 goto(){
-    if [[ -d "/home/ban/Desktop/$1" ]];then
-        cd /home/ban/Desktop/ && cd "$1"
+    if [[ -d "$HOME/Desktop/$1" ]];then
+        cd $HOME/Desktop/ && cd "$1"
     else
-        nvim /home/ban/Desktop/"$1"
+        nvim $HOME/Desktop/"$1"
     fi
 }
 
@@ -102,7 +102,7 @@ export server_addr="139.180.206.107"
 export colony_addr="kyzhou@10.4.3.17"
 
 # added manually for matlab workspace home
-export MATLAB_HOME="/home/ban/Programming/Matlab/workspace"
+export MATLAB_HOME="$HOME/Programming/Matlab/workspace"
 
 # added manually for github name
 export github_name="https://github.com/asfsdsf/"
@@ -114,10 +114,10 @@ mail_qq="739521505@qq.com"
 export EMAIL="739521505@qq.com"
 
 # add sfepy path
-export sfepy_path="/home/ban/Programming/Python/Anaconda/lib/python3.6/site-packages/sfepy/script"
+export sfepy_path="$HOME/Programming/Python/Anaconda/lib/python3.6/site-packages/sfepy/script"
 
 # added by Anaconda3 installer
-# export PATH="/home/ban/Programming/Python/Anaconda/bin:$PATH"
+# export PATH="$HOME/Programming/Python/Anaconda/bin:$PATH"
 
 # added manually to start emacs deamon automatically
 export ALTERNATE_EDITOR=""
@@ -143,22 +143,22 @@ export PYTHONPATH="$PYTHONPATH:${HOME}/Software/fealpy/software/lib/python3.6/si
 # added manually for mpi env
 export PATH=/usr/local/mpich/bin:$PATH
 # added manually for script to be run in command line
-export PATH=/home/ban/Programming/shell/command:$PATH
+export PATH=$HOME/Programming/shell/command:$PATH
 # added manually for gradle env
 export PATH=$PATH:/usr/local/gradle/gradle-4.9/bin
 
 # added manually for libmesh env
-export LIBMESH_DIR=/home/ban/Software/libmesh/software
+export LIBMESH_DIR=$HOME/Software/libmesh/software
 
 # added manually for PETSc env
-export PETSC_DIR=/home/ban/Software/PETSc/petsc 
+export PETSC_DIR=$HOME/Software/PETSc/petsc 
 export PETSC_ARCH=arch-linux-c-debug
 
 # added manually for slepc env
-export SLEPC_DIR=/home/ban/Software/slepc/software
+export SLEPC_DIR=$HOME/Software/slepc/software
 
 # added manually for deal.ii env
-export DEAL_II_DIR=/home/ban/Software/deal_II/software
+export DEAL_II_DIR=$HOME/Software/deal_II/software
 
 # added manually for latex env
 export LOCALTEXMF="$HOME/Software/latex"
