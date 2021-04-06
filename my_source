@@ -87,6 +87,8 @@ alias jc=$'cd $(replace "$(pwd)" "." "$(cat $HOME/.local/share/autojump/autojump
 alias r='[[ $TERM = "stterm-256color" ]] && ranger || stterm -e ranger'
 
 alias fuzzy_find="find -type f|fzf-preview-split"
+
+alias attach_display=$'export DISPLAY=$(who |grep -P \' :\\d\' | awk \'{print $2}\'|head -n 1)'
 ###################################################
 ############ shortcuts settings ###################
 ###################################################
