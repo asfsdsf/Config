@@ -32,18 +32,13 @@ alias set_proxy="export http_proxy=127.0.0.1:8080 && export https_proxy=127.0.0.
 alias lisp="sbcl"
 
 # added manually to open emacs in terminal
-alias emacsnw="fanqiang emacs -nw"
+alias emacsnw="LC_CTYPE=zh_CN.UTF-8 emacsclient -c -a=''"
 
 # added manually to use tmux for convenience
 alias t="tmux"
 
 # added manually to open program with system default software
 alias o='xdg-open'
-
-# add command for wps softwares
-alias wps="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/wps"
-alias wpp="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/wpp"
-alias et="$HOME/Software/WPS/wps-office_10.1.0.6757_x86_64/et"
 
 # go to directories
 # alias goto="cd $HOME/Desktop/ && cd"
